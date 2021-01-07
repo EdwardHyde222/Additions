@@ -42,21 +42,29 @@ public class Files {
 		}
 		
 		else if (Type == FileType.PLAYER_CHAT_EVENT) {
-			File event = new File(v1 + "\\PlayerChatEvent.jar");
-			try {event.createNewFile();} catch (Exception e) {}
+			createNewFile(v1 + "\\PlayerChatEvent.jar");
 		}
-		
+
 		else if (Type == FileType.PLAYER_INTERACT_EVENT) {
-			File event = new File(v1 + "\\PlayerInteractEvent.jar");
-			try {event.createNewFile();} catch (Exception e) {}
+			createNewFile(v1 + "\\PlayerInteractEvent.jar");
 		}
 		
 		else if (Type == FileType.ENTITY_DEATH_EVENT) {
-			File event = new File(v1 + "\\EntityDeathEvent.jar");
-			try {event.createNewFile();} catch (Exception e) {}
+			createNewFile(v1 + "\\EntityDeathEvent.jar");
 		}
 	}
-	
+
+	private static void createNewFile(String fileName) {
+		File event = new File(fileName);
+		if (!event.exists()) {
+			try {
+				event.createNewFile();
+			} catch (Exception e) {
+				log.error("can't create " + fileName);
+			}
+		}
+	}
+
 	public static void createFolder(Folders Folder) {
 		if (Folder == Folders.MAIN) {
 			File folder = new File("plugins/Additions");

@@ -194,7 +194,7 @@ public class APIDS {
 
 		String Data = key.toString();
 		// Data = ItemStack{IRON_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC,
-		// display-name="§fСеребряный слиток", lore=[§aПревосходный слиток],
+		// display-name="В§fВ§В§В§В§В§В§В§В§В§В§ В§В§В§В§В§В§", lore=[В§aВ§В§В§В§В§В§В§В§В§В§В§В§ В§В§В§В§В§В§],
 		// enchants={ARROW_INFINITE=1, DAMAGE_ALL=10}}}
 		int length = Data.length();
 
@@ -252,12 +252,12 @@ public class APIDS {
 		// Because the item can have, for example, ONLY a custom name and
 		// the string will end with the element '}' respectively that's why we read two
 		// types
-		v3 = v3.replace("display-name=", "©");
-		if (v3.contains("©")) {
+		v3 = v3.replace("display-name=", "В§");
+		if (v3.contains("В§")) {
 			display_name_found = true;
 			int v4 = 0;
 			for (int i = 0; i < v3.length(); i++) {
-				if (v3.charAt(i) == '©') {
+				if (v3.charAt(i) == 'В§') {
 					v4 = (i + 1);
 					break;
 				}
@@ -284,12 +284,12 @@ public class APIDS {
 		// How that works:
 		// Here is almost the same algorithm for calculating values as the custom item
 		// name
-		v6 = v6.replace("lore=", "©");
-		if (v6.contains("©")) {
+		v6 = v6.replace("lore=", "В§");
+		if (v6.contains("В§")) {
 			item_lore_found = true;
 			int v7 = 0;
 			for (int i = 0; i < v6.length(); i++) {
-				if (v6.charAt(i) == '©') {
+				if (v6.charAt(i) == 'В§') {
 					v7 = (i + 2);
 					break;
 				}

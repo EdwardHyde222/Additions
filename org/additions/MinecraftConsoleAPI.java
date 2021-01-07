@@ -6,23 +6,23 @@ import org.bukkit.ChatColor;
 
 public class MinecraftConsoleAPI {
 	
-	private String prefix = "ง9[Additions] ";
+	private String prefix = "ยง9[Additions] ";
 	private Boolean include_colors = false;
 	private Logger log = Logger.getLogger("Minecraft");
 	
 	public void info(String message) {
 		if (include_colors) log.info(prefix + ChatColor.GRAY + message);
-		else log.info(prefix + message.replace('&', 'ง'));
+		else log.info(prefix + message.replace('&', 'ยง'));
 	}
 	
 	public void warning(String message) {
 		if (include_colors) log.warning(prefix + ChatColor.GOLD + message);
-		else log.warning(prefix + message.replace('&', 'ง'));
+		else log.warning(prefix + message.replace('&', 'ยง'));
 	}
 	
 	public void error(String message) {
 		if (include_colors) log.severe(prefix + ChatColor.RED + message);
-		else log.severe(prefix + message.replace('&', 'ง'));
+		else log.severe(prefix + message.replace('&', 'ยง'));
 	}
 	
 	//////////////////////////////////////

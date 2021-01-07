@@ -19,10 +19,10 @@ public class Files {
 			File config = new File("plugins/Additions/config.yml");
 			if (!config.exists()) {
 				if (plugin.getConfig().getBoolean("messages.Enabled")) 
-					log.info(plugin.getConfig().getString("messages.Configuration.successfully").replace("&", "�"));
+					log.info(plugin.getConfig().getString("messages.Configuration.successfully").replace("&", "§"));
 			} else {
 				if (plugin.getConfig().getBoolean("messages.Enabled")) 
-					log.info(plugin.getConfig().getString("messages.Configuration.unsuccessfully").replace("&", "�"));
+					log.info(plugin.getConfig().getString("messages.Configuration.unsuccessfully").replace("&", "§"));
 			}
 		}
 		
@@ -63,10 +63,10 @@ public class Files {
 			boolean flag = folder.mkdir(); 
 			if (flag) {
 				if (plugin.getConfig().getBoolean("messages.Enabled")) 
-					log.error(plugin.getConfig().getString("messages.Folders.Additions.successfully").replace("&", "�")); 
+					log.error(plugin.getConfig().getString("messages.Folders.Additions.successfully").replace("&", "§"));
 			} else {
 				if (plugin.getConfig().getBoolean("messages.Enabled"))
-					log.error(plugin.getConfig().getString("messages.Folders.Additions.unsuccessfully").replace("&", "�"));
+					log.error(plugin.getConfig().getString("messages.Folders.Additions.unsuccessfully").replace("&", "§"));
 			}
 		}
 		
@@ -75,10 +75,10 @@ public class Files {
 			boolean flag = folder.mkdir(); 
 			if (flag) {
 				if (plugin.getConfig().getBoolean("messages.Enabled")) 
-					log.error(plugin.getConfig().getString("messages.Folders.Workbench.successfully").replace("&", "�")); 
+					log.error(plugin.getConfig().getString("messages.Folders.Workbench.successfully").replace("&", "§"));
 			} else {
 				if (plugin.getConfig().getBoolean("messages.Enabled"))
-					log.error(plugin.getConfig().getString("messages.Folders.Workbench.unsuccessfully").replace("&", "�"));
+					log.error(plugin.getConfig().getString("messages.Folders.Workbench.unsuccessfully").replace("&", "§"));
 			}
 		}
 		
@@ -87,10 +87,10 @@ public class Files {
 			boolean flag = folder.mkdir(); 
 			if (flag) {
 				if (plugin.getConfig().getBoolean("messages.Enabled")) 
-					log.error(plugin.getConfig().getString("messages.Folders.Modules.successfully").replace("&", "�")); 
+					log.error(plugin.getConfig().getString("messages.Folders.Modules.successfully").replace("&", "§"));
 			} else {
 				if (plugin.getConfig().getBoolean("messages.Enabled"))
-					log.error(plugin.getConfig().getString("messages.Folders.Modules.unsuccessfully").replace("&", "�"));
+					log.error(plugin.getConfig().getString("messages.Folders.Modules.unsuccessfully").replace("&", "§"));
 			}
 		}
 	}

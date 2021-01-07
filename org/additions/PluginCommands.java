@@ -46,7 +46,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.items_list") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
@@ -54,15 +54,15 @@ public class PluginCommands implements CommandExecutor, Listener{
 					if (sender instanceof Player) 
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Item list:"));
 					else
-						sender.sendMessage(" §3Additions §9Item list:");
+						sender.sendMessage(" Â§3Additions Â§9Item list:");
 					
 					for (int i = 0; i < Storage.getItemsAmount(); i++)
-						sender.sendMessage(" §8[§b" + i + "§8] §c" + Storage.getDefaultItemName(i) + " §7: §3" + Storage.getFileName(i));
+						sender.sendMessage(" Â§8[Â§b" + i + "Â§8] Â§c" + Storage.getDefaultItemName(i) + " Â§7: Â§3" + Storage.getFileName(i));
 				} else {
 					if (sender instanceof Player)
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "No custom items found!"));
 					else
-						sender.sendMessage(" §3Additions §9No custom items found!");
+						sender.sendMessage(" Â§3Additions Â§9No custom items found!");
 				}
 				return true;
 			} 
@@ -75,7 +75,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.reload") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
@@ -94,19 +94,19 @@ public class PluginCommands implements CommandExecutor, Listener{
 			    	
 					if (plugin.getConfig().getBoolean("modules.W-Module.Enable")) {
 						recipe.createRecipes("plugins/Additions/Workbench/");
-						log.info(plugin.getConfig().getString("messages.Modules.Workbench").replace("&", "§"));
+						log.info(plugin.getConfig().getString("messages.Modules.Workbench").replace("&", "Â§"));
 						log.info("Loaded " + Storage.getItemsAmount() + " custom items.");
 					}
 				    
 					if (sender instanceof Player)
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + plugin.getConfig().getString("messages.reload.successfully")));
 					else
-						sender.sendMessage(" §3Additions §a" + plugin.getConfig().getString("messages.reload.successfully"));
+						sender.sendMessage(" Â§3Additions Â§a" + plugin.getConfig().getString("messages.reload.successfully"));
 				} catch (Exception e) {
 					if (sender instanceof Player)
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + plugin.getConfig().getString("messages.reload.unsuccessfully")));
 					else
-						sender.sendMessage(" §3Additions §c" + plugin.getConfig().getString("messages.reload.unsuccessfully"));
+						sender.sendMessage(" Â§3Additions Â§c" + plugin.getConfig().getString("messages.reload.unsuccessfully"));
 				}
 				return true;
 			} 
@@ -119,27 +119,27 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!(sender instanceof Player)) {
-					sender.sendMessage(" §3Additions §9Console cannot use this command! Use '/?'");
+					sender.sendMessage(" Â§3Additions Â§9Console cannot use this command! Use '/?'");
 					return true;
 				}
 				
 				if (!sender.hasPermission("additions.info") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
 				else {
 					for (int i = 0; i < 100; i++)
 						sender.sendMessage("");
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as export <key> - §fexport a custom item by a special key (will be done in the next updates)"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as get <custom_item_id> [amount] - §fget a custom item from the list"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as give <player> <custom_item_id> [amount] - §fgives a custom item from the list"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as import <custom_item_id> - §fget a special key of item (will be done in the next updates"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as info - §fget information about plugin commands"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as list - §fget a list of custom items by their id (sort from 0)"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as recipes - §fthe menu where custom items and their crafting are located"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as reload - §freloads API functions, configuration file,"));
-					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Developed by §fIlucious"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as export <key> - Â§fexport a custom item by a special key (will be done in the next updates)"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as get <custom_item_id> [amount] - Â§fget a custom item from the list"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as give <player> <custom_item_id> [amount] - Â§fgives a custom item from the list"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as import <custom_item_id> - Â§fget a special key of item (will be done in the next updates"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as info - Â§fget information about plugin commands"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as list - Â§fget a list of custom items by their id (sort from 0)"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as recipes - Â§fthe menu where custom items and their crafting are located"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "/as reload - Â§freloads API functions, configuration file,"));
+					sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Developed by Â§fIlucious"));
 				}
 			} 
 			/////////////////////////////////////////
@@ -152,13 +152,13 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.stats") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 
 				else if (!(sender instanceof Player)) {
-					sender.sendMessage(" §3Additions §9Cannot show GUI to console");
-					sender.sendMessage(" §3Additions §9Just wait for 'console' update!");
+					sender.sendMessage(" Â§3Additions Â§9Cannot show GUI to console");
+					sender.sendMessage(" Â§3Additions Â§9Just wait for 'console' update!");
 					return true;
 				}
 				
@@ -168,8 +168,8 @@ public class PluginCommands implements CommandExecutor, Listener{
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Just wait for 'statistics' update!"));
 					}
 					else {
-						sender.sendMessage(" §3Additions §9Currently not working! Wait for update . . ");
-						sender.sendMessage(" §3Additions §9Just wait for 'statistics' update!");
+						sender.sendMessage(" Â§3Additions Â§9Currently not working! Wait for update . . ");
+						sender.sendMessage(" Â§3Additions Â§9Just wait for 'statistics' update!");
 					}
 				}
 			}
@@ -182,7 +182,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.import_items") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				else {
@@ -191,8 +191,8 @@ public class PluginCommands implements CommandExecutor, Listener{
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Just wait for 'drag-and-drop' update!"));
 					}
 					else {
-						sender.sendMessage(" §3Additions §9Currently not working! Wait for update . . ");
-						sender.sendMessage(" §3Additions §9Just wait for 'drag-and-drop' update!");
+						sender.sendMessage(" Â§3Additions Â§9Currently not working! Wait for update . . ");
+						sender.sendMessage(" Â§3Additions Â§9Just wait for 'drag-and-drop' update!");
 					}
 				}
 			}
@@ -205,7 +205,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.export_items") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				else {
@@ -214,8 +214,8 @@ public class PluginCommands implements CommandExecutor, Listener{
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Just wait for 'drag-and-drop' update!"));
 					}
 					else {
-						sender.sendMessage(" §3Additions §9Currently not working! Wait for update . . ");
-						sender.sendMessage(" §3Additions §9Just wait for 'drag-and-drop' update!");
+						sender.sendMessage(" Â§3Additions Â§9Currently not working! Wait for update . . ");
+						sender.sendMessage(" Â§3Additions Â§9Just wait for 'drag-and-drop' update!");
 					}
 				}
 			}
@@ -228,12 +228,12 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.get_items") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
 				else if (!(sender instanceof Player)) {
-					sender.sendMessage(" §3Additions §9Cannot give item to console");
+					sender.sendMessage(" Â§3Additions Â§9Cannot give item to console");
 					return true;
 				}
 				else if (args.length == 1) {
@@ -291,7 +291,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.give_items") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
@@ -299,7 +299,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 					if (sender instanceof Player)
 						sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Provide player name"));
 					else
-						sender.sendMessage(" §3Additions §9Provide player name");
+						sender.sendMessage(" Â§3Additions Â§9Provide player name");
 					return true;
 				} 
 				else if (args.length == 2) {
@@ -314,15 +314,15 @@ public class PluginCommands implements CommandExecutor, Listener{
 						if (sender instanceof Player)
 							sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Provide an custom item number"));
 						else
-							sender.sendMessage(" §3Additions §9Provide an custom item number");
+							sender.sendMessage(" Â§3Additions Â§9Provide an custom item number");
 						
-						// §3Additions §9
+						// Â§3Additions Â§9
 					}
 					else {
 						if (sender instanceof Player)
 							sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Player not found"));
 						else
-							sender.sendMessage(" §3Additions §9Player not found");	
+							sender.sendMessage(" Â§3Additions Â§9Player not found");
 					}
 					return true;
 				} 
@@ -341,7 +341,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 						if (sender instanceof Player)
 							sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Player not found"));
 						else
-							sender.sendMessage(" §3Additions §9Player not found");
+							sender.sendMessage(" Â§3Additions Â§9Player not found");
 						return true;
 					}
 					
@@ -376,7 +376,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 						if (sender instanceof Player)
 							sender.sendMessage(ChatFormat(" #7D05A3&lAdditions #FFF889" + "Player not found"));
 						else
-							sender.sendMessage(" §3Additions §9Player not found");
+							sender.sendMessage(" Â§3Additions Â§9Player not found");
 						return true;
 					}
 					
@@ -411,7 +411,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 				// 			PERMISSION CHECK		//
 				//////////////////////////////////////
 				if (!sender.hasPermission("additions.gui") || !sender.isOp()) {
-					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "§"));
+					sender.sendMessage(plugin.getConfig().getString("messages.no-permission").replace("&", "Â§"));
 					return true;
 				}
 				
@@ -450,7 +450,7 @@ public class PluginCommands implements CommandExecutor, Listener{
 						+ plugin.getDescription().getAuthors().toArray()[0].toString().replace("[", "").replace("]", ""));
 			}
 			else {
-				sender.sendMessage(ChatFormat(" §3Additions §9Additions ")
+				sender.sendMessage(ChatFormat(" Â§3Additions Â§9Additions ")
 						+ plugin.getDescription().getVersion() + " ~"
 						+ plugin.getDescription().getAuthors().toArray()[0].toString().replace("[", "").replace("]", ""));
 			}

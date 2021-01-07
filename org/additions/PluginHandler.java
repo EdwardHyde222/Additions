@@ -70,7 +70,7 @@ public class PluginHandler implements Listener {
 				List<String> Information4 = new ArrayList<String>();
 				List<String> Information5 = new ArrayList<String>();
 				
-				gui.setName("§a§lRecipe");
+				gui.setName("Â§aÂ§lRecipe");
 				gui.createGUI(27);
 				gui.includeHandler();
 				
@@ -95,20 +95,20 @@ public class PluginHandler implements Listener {
 				if (Storage.getMeta(i).hasEnchants()) {
 					for (int j = 0; j < Storage.getEnchants(i).size(); j++) {
 						if (j == 0)
-							Information1.add("§c§lEnchantments: §f" + Storage.getEnchants(i).get(j).toString().toUpperCase());
+							Information1.add("Â§cÂ§lEnchantments: Â§f" + Storage.getEnchants(i).get(j).toString().toUpperCase());
 						else
-							Information1.add("                      §f" + Storage.getEnchants(i).get(j).toString().toUpperCase());
+							Information1.add("                      Â§f" + Storage.getEnchants(i).get(j).toString().toUpperCase());
 					}
 				} 
 				else
-					Information1.add("§c§lEnchantments: §7§oNot specified");
+					Information1.add("Â§cÂ§lEnchantments: Â§7Â§oNot specified");
 				/*
 				 * DISPLAY NAME SECTION
 				 */
 				if (Storage.getMeta(i).hasDisplayName())
-					Information2.add("§c§lDisplay name: " + Storage.getItemName(i));
+					Information2.add("Â§cÂ§lDisplay name: " + Storage.getItemName(i));
 				else
-					Information2.add("§c§lDisplay name: §7§oNot specified");
+					Information2.add("Â§cÂ§lDisplay name: Â§7Â§oNot specified");
 				/*
 				 * LORE SECTION
 				 */
@@ -116,29 +116,29 @@ public class PluginHandler implements Listener {
 					if (!Storage.getItemLore(i).isEmpty()) {
 						for (int j = 0; j < Storage.getItemLore(i).size(); j++) {
 							if (j == 0)
-								Information3.add("§c§lLore: " + Storage.getItemLore(i).get(j));
+								Information3.add("Â§cÂ§lLore: " + Storage.getItemLore(i).get(j));
 							else
 								Information3.add("         " + Storage.getItemLore(i).get(j));
 						}
 					}
 				}
 				else
-					Information3.add("§c§lLore: §7§oNot specified");
+					Information3.add("Â§cÂ§lLore: Â§7Â§oNot specified");
 				/*
 				 * DURABILITY SECTION
 				 */
-				Information4.add("§c§lDurability: §f" + Storage.getDurability(i));
+				Information4.add("Â§cÂ§lDurability: Â§f" + Storage.getDurability(i));
 				/*
 				 * AMOUNT SECTION
 				 */
-				Information4.add("§c§lAmount: §f" + Storage.getAmount(i));
+				Information4.add("Â§cÂ§lAmount: Â§f" + Storage.getAmount(i));
 				/*
 				 * MODEL_DATA SECTION
 				 */
 				if (Storage.getMeta(i).hasCustomModelData())
-					Information5.add("§c§lModel-Data: " + String.valueOf(Storage.getModelData(i)));
+					Information5.add("Â§cÂ§lModel-Data: " + String.valueOf(Storage.getModelData(i)));
 				else
-					Information5.add("§c§lModel-Data: §7§oNot specified");
+					Information5.add("Â§cÂ§lModel-Data: Â§7Â§oNot specified");
 				
 				//  4  5  6  7
 				// 13 14 15 16 *

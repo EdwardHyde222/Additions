@@ -92,12 +92,12 @@ public class API extends Object_Identification {
 				this.config = YamlConfiguration.loadConfiguration(new FileReader(path + "\\" + fileList.get(i))); // <--- Creating JSON configuration reader
 				this.FilePath = path; // <--- Saving path to current file (for debug may be)
 				this.FileName = fileList.get(i); // <--- Getting file name from the path
-				this.log.setPrefix("§e[Additions : API] "); // <--- Setting up prefix to console logger
+				this.log.setPrefix("Â§e[Additions : API] "); // <--- Setting up prefix to console logger
 				this.RegisterRecipe(); // <--- Creating recipe with metadata
 			}
 		} catch (Exception e) {
 			this.log.setPrefix("[Additions : API] "); // <--- Setting up prefix to console logger
-			log.error(path + " --> " + plugin.getConfig().getString("messages.bad_path").replace("&", "§"));
+			log.error(path + " --> " + plugin.getConfig().getString("messages.bad_path").replace("&", "Â§"));
 			this.Working = false;
 		}
 	}
@@ -112,7 +112,7 @@ public class API extends Object_Identification {
 			this.createRecipe(path, fileList);
 		} catch (Exception e) {
 			this.log.setPrefix("[Additions : API] "); // <--- Setting up prefix to console logger
-			log.error(plugin.getConfig().getString("messages.bad_path").replace("&", "§"));
+			log.error(plugin.getConfig().getString("messages.bad_path").replace("&", "Â§"));
 			this.Working = false;
 		}
 	}
@@ -132,9 +132,9 @@ public class API extends Object_Identification {
 	private void setMetaData(ItemMeta meta) {	
 		try {ItemAmount = config.getString("amount");} catch (Exception e) {}
 		
-		try {ItemName = config.getString("name"); meta.setDisplayName(ItemName.replace("&", "§")); } catch (Exception e) {}
+		try {ItemName = config.getString("name"); meta.setDisplayName(ItemName.replace("&", "Â§")); } catch (Exception e) {}
 		
-		try {ItemLore = config.getStringList("lore"); try {if (!ItemLore.isEmpty()) {for (int i = 0; i < ItemLore.size(); i++) {ItemLore.set(i, ItemLore.get(i).replace("&", "§"));}meta.setLore(ItemLore);} else {}} catch (Exception e) {}} catch (Exception e) {}
+		try {ItemLore = config.getStringList("lore"); try {if (!ItemLore.isEmpty()) {for (int i = 0; i < ItemLore.size(); i++) {ItemLore.set(i, ItemLore.get(i).replace("&", "Â§"));}meta.setLore(ItemLore);} else {}} catch (Exception e) {}} catch (Exception e) {}
 		
 		try {Enchantments = config.getStringList("enchantment"); try {if (!Enchantments.isEmpty()) {for (int i = 0; i < Enchantments.size(); i++) {try {String method[] = Enchantments.get(i).split(" ");if (method.length > 1) {meta.addEnchant(EnchantmentTypeResolve(method[0]), Integer.parseInt(method[1]), true);} else if (method.length == 1) {meta.addEnchant(EnchantmentTypeResolve(method[0]), 1, true);}} catch (Exception e) {try {String method[] = Enchantments.get(i).split(",");method[0] = method[0].replace(" ", "");method[1] = method[1].replace(" ", "");meta.addEnchant(EnchantmentTypeResolve(method[0]), Integer.parseInt(method[1]), true);} catch (Exception z) {}}}}} catch (Exception e) {}} catch (Exception z) {} 
 		
@@ -148,10 +148,10 @@ public class API extends Object_Identification {
 	private void SearchVariables(ItemMeta meta) {
 		try {
 			ItemName = config.getString("name");
-			meta.setDisplayName(ItemName.replace("&", "§")); 
+			meta.setDisplayName(ItemName.replace("&", "Â§"));
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_name_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_name_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -159,20 +159,20 @@ public class API extends Object_Identification {
 			try {
 				if (!ItemLore.isEmpty()) {
 					for (int i = 0; i < ItemLore.size(); i++) {
-						ItemLore.set(i, ItemLore.get(i).replace("&", "§"));
+						ItemLore.set(i, ItemLore.get(i).replace("&", "Â§"));
 					}
 					meta.setLore(ItemLore);
 				} else {
 					if (Working)
-						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "§"));
+						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "Â§"));
 				}
 			} catch (Exception e) {
 				if (Working)
-					this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "§"));
+					this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "Â§"));
 			}
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_lore_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -195,28 +195,28 @@ public class API extends Object_Identification {
 								meta.addEnchant(EnchantmentTypeResolve(method[0]), Integer.parseInt(method[1]), true);
 							} catch (Exception z) {
 								if (Working)
-									this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "§"));
+									this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "Â§"));
 							}
 						}
 					}
 				} else {
 					if (Working)
-						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "§"));
+						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "Â§"));
 				}
 			} catch (Exception e) {
 				if (Working)
-					this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "§"));
+					this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "Â§"));
 			}
 		} catch (Exception z) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_enchantments_not_found").replace("&", "Â§"));
 		} 
 		
 		try {
 			ItemRecipe = config.getStringList("craft");
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -224,7 +224,7 @@ public class API extends Object_Identification {
 			meta.setUnbreakable(Unbreakable);
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_unbreakable_state_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_unbreakable_state_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -232,7 +232,7 @@ public class API extends Object_Identification {
 			meta.setCustomModelData(Integer.parseInt(CustomModelData));
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_model_data_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_model_data_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -257,7 +257,7 @@ public class API extends Object_Identification {
 			meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_modifiers_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_modifiers_not_found").replace("&", "Â§"));
 		}
 		
 		try {
@@ -283,7 +283,7 @@ public class API extends Object_Identification {
 			
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_modifiers_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_modifiers_not_found").replace("&", "Â§"));
 		}
 	}	
 	
@@ -305,7 +305,7 @@ public class API extends Object_Identification {
 			Item.setDurability(Short.valueOf(Durability));
 		} catch (Exception e){
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_durability_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_durability_not_found").replace("&", "Â§"));
 			if (Item.getType().getMaxDurability() == 0)
 				Durability = "-1";
 			else
@@ -325,7 +325,7 @@ public class API extends Object_Identification {
 			Item.setAmount(tempItemAmount);
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_amount_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_amount_not_found").replace("&", "Â§"));
 			ItemAmount = "1";
 			Item.setAmount(1);
 		}
@@ -336,7 +336,7 @@ public class API extends Object_Identification {
 			RecipePermission = config.getString("permission").toLowerCase();
 		} catch (Exception e) {
 			if (Working)
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_permission_not_found").replace("&", "§"));
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_permission_not_found").replace("&", "Â§"));
 			RecipePermission = "NO_PERM_BY_ADMIN";
 		}
 	}
@@ -346,7 +346,7 @@ public class API extends Object_Identification {
 			Item = new ItemStack(Material.matchMaterial(this.config.getString("item")));
 			Working = true;	
 		} catch (Exception e) {
-			this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_not_found").replace("&", "§"));
+			this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_not_found").replace("&", "Â§"));
 			Working = false;
 		}
 		
@@ -370,10 +370,10 @@ public class API extends Object_Identification {
 			NamespacedKey Key = new NamespacedKey(plugin, FileName);
 			ShapedRecipe MyRecipe = new ShapedRecipe(Key, Item);
 			
-			MyRecipe.shape("abc", "def", "ghi"); // <--- Óñòàíàâëèâàåì ôîðìó êðàôòà
-			final String tempArray[][] = {{"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}}; // <--- Ïðîñòî êîíñòàíòû
+			MyRecipe.shape("abc", "def", "ghi"); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§
+			final String tempArray[][] = {{"a", "b", "c"}, {"d", "e", "f"}, {"g", "h", "i"}}; // <--- Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§
 			
-			int logicCounter = 0; // <--- Âðåìåííàÿ ïåðåìåííàÿ
+			int logicCounter = 0; // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§
 			pointer: for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
 					try {
@@ -386,42 +386,42 @@ public class API extends Object_Identification {
 						if (i == 2)
 							v3.add(temp);
 						if (this.solveItem(ItemRecipe.get(i).toString().split(" ")[j], fileList).getType() == Material.AIR)
-							logicCounter++; // <--- Ñ÷èòàåì åñëè èíãðèäèåíò áóäåò ðàâåí ïóñòîòå
+							logicCounter++; // <--- Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§
 					} catch (Exception e) { 
-						this.ErrorDataCollection.clear(); // <--- Âûãðóæàåì ïðåäóïðåæäåíèÿ
-						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "§"));
-						Working = false; // <--- Óêàçûâàåì ÷òî ðåöåïò íå ðàáîòàåò
-						break pointer; // <--- Ëîìàåì öèêë ïî ïîèíòåðó, ÷òîáû íå çàòÿãèâàòü ðàáîòó ïëàãèíà (ýêîíîìèì bruh)
+						this.ErrorDataCollection.clear(); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§
+						this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "Â§"));
+						Working = false; // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§
+						break pointer; // <--- Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§, Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§ (Â§Â§Â§Â§Â§Â§Â§Â§ bruh)
 					}
 				}
 			}
-			if (logicCounter == 9) { // Åñëè ðåöåïò íå ñîñòîèò èç ïðåäìåòîâ, à òîëüêî èç ïóñòîòû òî îòêëþ÷àåì êðàôò
-				this.ErrorDataCollection.clear(); // <--- Âûãðóæàåì ïðåäóïðåæäåíèÿ
-				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "§"));
-				Working = false; // <--- Óêàçûâàåì ÷òî ðåöåïò íå ðàáîòàåò
+			if (logicCounter == 9) { // Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§, Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§
+				this.ErrorDataCollection.clear(); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§
+				this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.item_recipe_not_found").replace("&", "Â§"));
+				Working = false; // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§
 			}
 			
 			if (Working) {
-				plugin.getServer().addRecipe(MyRecipe); // <--- Ðåãèñòðèðóåì íîâûé êðàôò íà ñåðâåð
-				this.ImportData(); // <--- Çàãðóæàåì äàííûå ïðåäìåòà/ïðàâà íà êðàôò/ðåöåïò è ïðî÷åå
+				plugin.getServer().addRecipe(MyRecipe); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§
+				this.ImportData(); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§/Â§Â§Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§/Â§Â§Â§Â§Â§Â§ Â§ Â§Â§Â§Â§Â§Â§
 				if (ErrorDataCollection.isEmpty())
-					ExtractSuccess(); // <--- Âûâîäèì ÷òî âñ¸ õîðîøî è ïðåäóïðåæäåíèé íåò
+					ExtractSuccess(); // <--- Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§ Â§Â§ Â§Â§Â§Â§Â§Â§ Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§
 				else
-					ExtractWarnings(); // <--- Âûâîäèì äàííûå èç ErrorDataCollection â âèäå ïðåäóïðåæäåíèé
+					ExtractWarnings(); // <--- Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ ErrorDataCollection Â§ Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§
 			}
 		}
 		
 		if (!Working) {
-			this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.api_error").replace("&", "§"));
-			ExtractErrors(); // <--- Âûâîäèì äàííûå èç ErrorDataCollection ââèäå îøèáîê
+			this.ErrorDataCollection.add(this.FileName + " --> " + plugin.getConfig().getString("messages.api_error").replace("&", "Â§"));
+			ExtractErrors(); // <--- Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§Â§ ErrorDataCollection Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§
 		}
 		
-		this.ImportAnotherData(); // <--- Çàãðóæàåì äàííûå î ðàáîòîñïîñîáíîñòè êðàôòà â õðàíèëèùå
-		this.ErrorDataCollection.clear(); // <--- Âûãðóæàåì îøèáêè/ïðåäóïðåæäåíèÿ
+		this.ImportAnotherData(); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§ Â§ Â§Â§Â§Â§Â§Â§Â§Â§Â§
+		this.ErrorDataCollection.clear(); // <--- Â§Â§Â§Â§Â§Â§Â§Â§Â§ Â§Â§Â§Â§Â§Â§/Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§Â§
 	}
 	
 	private void ExtractWarnings() {
-		log.setPrefix("§e[Additions : API] ");
+		log.setPrefix("Â§e[Additions : API] ");
 		
 		for (String message : this.ErrorDataCollection) {
 			if (message.contains(this.FileName))
@@ -438,8 +438,8 @@ public class API extends Object_Identification {
 	}
 	
 	private void ExtractSuccess() {
-		log.setPrefix("§a[Additions : API] ");
-		log.info(this.FileName + " --> " + plugin.getConfig().getString("messages.api_success").replace("&", "§"));
+		log.setPrefix("Â§a[Additions : API] ");
+		log.info(this.FileName + " --> " + plugin.getConfig().getString("messages.api_success").replace("&", "Â§"));
 	}
 	
 	private void ImportData() {

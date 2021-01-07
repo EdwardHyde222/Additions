@@ -29,7 +29,7 @@ public class StatisticsEventHandler implements Listener {
 				if (Storage.getItem(i).isSimilar(result)) {
 					if (!player.hasPermission("additions.craft." + Storage.getCraftPermission(i))
 							&& !Storage.getCraftPermission(i).equalsIgnoreCase("NO_PERM_BY_ADMIN")) {
-						player.sendMessage("§cYou don't have permission to craft this item!");
+						player.sendMessage("Â§cYou don't have permission to craft this item!");
 						e.setCancelled(true);
 						break;
 					} else {

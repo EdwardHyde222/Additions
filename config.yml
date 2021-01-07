@@ -1,0 +1,80 @@
+##
+##
+##  ░█████╗░██████╗░██████╗░██╗████████╗██╗░█████╗░███╗░░██╗░██████╗░░██╗░░░██╗░░░░░███╗░░
+##  ██╔══██╗██╔══██╗██╔══██╗██║╚══██╔══╝██║██╔══██╗████╗░██║██╔════╝░░██║░░░██║░░░░████║░░
+##  ███████║██║░░██║██║░░██║██║░░░██║░░░██║██║░░██║██╔██╗██║╚█████╗░░░╚██╗░██╔╝░░░██╔██║░░
+##  ██╔══██║██║░░██║██║░░██║██║░░░██║░░░██║██║░░██║██║╚████║░╚═══██╗░░░╚████╔╝░░░░╚═╝██║░░
+##  ██║░░██║██████╔╝██████╔╝██║░░░██║░░░██║╚█████╔╝██║░╚███║██████╔╝░░░░╚██╔╝░░██╗███████╗
+##  ╚═╝░░╚═╝╚═════╝░╚═════╝░╚═╝░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝╚═════╝░░░░░░╚═╝░░░╚═╝╚══════╝
+##
+##
+## Here you will see the main settings of the plugin. 
+## I think there is nothing complicated in setting up, otherwise, you can contact me at pm: https://cutt.ly/bhCtKok
+##
+messages:
+  no-permission: "&cYou don't have permission to do this"
+  no-craft-permission: "You don't have permission to craft this item!"
+  reload:
+    successfully: "Plugin successfully reloaded!"
+    unsuccessfully: "An error occurred during the plugin's reload."
+  
+  # All these messages will only be output to the console!
+  # You can also disable the output of these messages.
+  # If a folder or file is not being created you can use this function for debugging
+  Enabled: false
+  Configuration:
+    successfully: "Configuration had been created!"
+    unsuccessfully: "Configuration hadn't been created! It may be already exist."
+  Folders:
+    Workbench:
+      successfully: "Workbench API folder had been created!"
+      unsuccessfully: "Workbench API folder hadn't been created! The folder may be already exist."
+    Additions:
+      successfully: "Plugin's folder had been created!"
+      unsuccessfully: "Plugin's folder hadn't been created! The folder may be already exist."
+    Modules:
+      successfully: "Module folder had been created!"
+      unsuccessfully: "Module folder hadn't been created! The folder may be already exist."
+      
+  # The console will display data about loading plugin's modules
+  # This is very useful if you use extensions to the plugin's properties
+  # This function does not affect performance in any way
+  Modules:
+    Workbench: "Workbench recipe module loaded!"
+    Abbreviation: "Abbreviation module loaded!"
+    Command: "Default commands loaded!"
+    
+  # Setting up messages for crafting recipe files
+  item_not_found: "Item is not specified!"
+  item_recipe_not_found: "Item recipe is not specified!"
+  item_amount_not_found: "Item amount is not specified!"
+  item_durability_not_found: "Item durability is not specified!"
+  item_recipe_permission_not_found: "Item recipe permission is not specified!"
+  item_name_not_found: "The item name is not specified!"
+  item_lore_not_found: "Item description is not specified!"
+  item_enchantments_not_found: "Enchantment's on the item are not specified!"
+  item_model_data_not_found: "Item model data is not specified!"
+  item_modifiers_not_found: "Item modifiers is not specified!"
+  item_unbreakable_state_not_found: "Item unbreakable statement is not specified!"
+  api_success: "No warnings found :)"
+  api_error: "Caused error with loading an custom recipe!"
+  bad_path: "Incorrect recipe name/path!"
+  
+modules:
+  # Also you can disable unnecessary module
+  # However, this may affect the functionality of the plugin's
+  # Turn off only those modules whose functionality you know
+  W-Module:
+    Enable: true
+    Structure: default
+    Encoding: SHA-256
+  A-Module:
+    Enable: true
+  C-Module:
+    Enable: true
+    
+custom-texturepack:
+  Enabled: false
+  # Here is a link to download a texturepack
+  # You can use dropbox if u want
+  Link: "https://../."

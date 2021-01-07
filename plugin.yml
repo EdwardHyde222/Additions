@@ -1,0 +1,15 @@
+name: Additions
+version: 2.0.1
+api-version: 1.13
+main: org.additions.main
+author: ILucious
+description: Big list of additions for Spigot servers.
+website: https://vk.com/mpcworld
+#depend: [ProtocolLib]
+commands:
+  additions:
+    description: Base command
+    usage: /<command> <reload | list | recipes | get | gui | info>
+  as:
+    description: Base command
+    usage: /<command> <reload | list | recipes | get | gui | info>

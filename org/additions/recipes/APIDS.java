@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.additions.MinecraftConsoleAPI;
-import org.additions.main;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import ru.crypto.Aes256Class;
 
 @SuppressWarnings("unused")
 public class APIDS {
@@ -19,19 +16,19 @@ public class APIDS {
 	// TODO: Finish 'getItemFromKey()' method
 	
 	public static class Storage {	
-		protected static List<ItemStack> S_ItemList = new ArrayList<ItemStack>();
-		protected static List<String> S_DefaultItemName = new ArrayList<String>();
-		protected static List<String> S_FileName = new ArrayList<String>();
-		protected static List<String> S_FilePath = new ArrayList<String>();
-		protected static List<String> S_CraftPermission = new ArrayList<String>();
-		protected static List<Boolean> S_WorkOrNot = new ArrayList<Boolean>();
-		protected static List<String> S_ItemDurability = new ArrayList<String>();
+		protected static List<ItemStack> S_ItemList = new ArrayList<>();
+		protected static List<String> S_DefaultItemName = new ArrayList<>();
+		protected static List<String> S_FileName = new ArrayList<>();
+		protected static List<String> S_FilePath = new ArrayList<>();
+		protected static List<String> S_CraftPermission = new ArrayList<>();
+		protected static List<Boolean> S_WorkOrNot = new ArrayList<>();
+		protected static List<String> S_ItemDurability = new ArrayList<>();
 		
-		protected static ArrayList<List <Enchantment>> S_ItemEnchantments = new ArrayList<List <Enchantment>>();
-		protected static ArrayList<List <ItemStack>> S_ItemRecipeIngredients = new ArrayList<List <ItemStack>>();
-		protected static ArrayList<List <String>> S_ItemEnchantments2 = new ArrayList<List <String>>();
-		protected static ArrayList<List <String>> S_ItemRecipe = new ArrayList<List <String>>();
-		protected static ArrayList<List <String>> S_FileList = new ArrayList<List <String>>();
+		protected static ArrayList<List <Enchantment>> S_ItemEnchantments = new ArrayList<>();
+		protected static ArrayList<List <ItemStack>> S_ItemRecipeIngredients = new ArrayList<>();
+		protected static ArrayList<List <String>> S_ItemEnchantments2 = new ArrayList<>();
+		protected static ArrayList<List <String>> S_ItemRecipe = new ArrayList<>();
+		protected static ArrayList<List <String>> S_FileList = new ArrayList<>();
 		
 		public int getAmount(int index) {
 			return S_ItemList.get(index).getAmount();
@@ -76,15 +73,6 @@ public class APIDS {
 		public List<String> getEnchants(int index) {
 			return S_ItemEnchantments2.get(index);
 		}
-
-		// Remaked to getIngredient(..) function
-		/* public String[] getRecipeFullLine(int index, int line) {
-			return S_ItemRecipe.get(index).get(line - 1).split(" ");
-		}
-
-		public String getRecipeItem(int index, int line, int position) {
-			return S_ItemRecipe.get(index).get(line - 1).split(" ")[position - 1];
-		} */
 		
 		public ItemStack getIngredient(int index, int position) {
 			return S_ItemRecipeIngredients.get(index).get(position - 1);
@@ -167,10 +155,9 @@ public class APIDS {
 	private void searchValues(ItemStack Item) {
 		this.ItemAmount = Item.getAmount();
 		this.Durability = Item.getDurability();
-		
-		ItemStack tempItem = Item;
-		tempItem.getItemMeta().setDisplayName("");
-		this.DefaultItemName = tempItem.getI18NDisplayName(); // <--- New method to get Default name
+
+		Item.getItemMeta().setDisplayName("");
+		this.DefaultItemName = Item.getI18NDisplayName(); // <--- New method to get Default name
 		
 		this.Meta = Item.getItemMeta();
 		searchValues(Meta);
@@ -181,10 +168,6 @@ public class APIDS {
 		this.ItemName = Meta.getDisplayName();
 	}
 
-	// P.S. Just thought about using that in cipher method.
-	private final String Alphabet[][] = { { "A", "B", "C" }, { "D", "E", "F" }, { "G", "H", "I" }, { "J", "K", "L" },
-			{ "M", "N", "O" }, { "P", "Q", "R" }, { "S", "T", "U" }, { "V", "W", "X" }, { "Y", "Z", " " } };
-
 	// <------------------------------------> //
 	// Forming an element from a cache string //
 	// <------------------------------------> //
@@ -192,18 +175,17 @@ public class APIDS {
 		// TODO: Finish the item's enchantment list
 		// TODO: Finish the item's custom_model_data
 
-		String Data = key.toString();
 		// Data = ItemStack{IRON_INGOT x 1, UNSPECIFIC_META:{meta-type=UNSPECIFIC,
 		// display-name="§f§§§§§§§§§§ §§§§§§", lore=[§a§§§§§§§§§§§§ §§§§§§],
 		// enchants={ARROW_INFINITE=1, DAMAGE_ALL=10}}}
-		int length = Data.length();
+		int length = key.length();
 
 		// How that works:
 		// We taking part of the string with "ItemStack" because it is the same
 		// everywhere for any values
 		int MagicIndex = 0;
 		for (int i = 0; i < length; i++) {
-			if (Data.charAt(i) == ',') {
+			if (key.charAt(i) == ',') {
 				MagicIndex = (i);
 				break;
 			}
@@ -214,7 +196,7 @@ public class APIDS {
 		// the item will be made and its quantity (value of the item)
 		// "x" - is their separator so you can focus on it
 		// 10 is the number of letters that the word "ItemStack{" occupies
-		String v1 = Data.substring(10, MagicIndex);
+		String v1 = key.substring(10, MagicIndex);
 		String NotFinalMaterial = v1.split("x")[0].replaceAll(" ", "");
 		String NotFinalItemAmount = v1.split("x")[1].replaceAll(" ", "");
 
@@ -229,10 +211,10 @@ public class APIDS {
 		// Here we get the rest of the cache line which contains the values for the meta
 		// of our item
 		// 10 is the number of letters that the word "ItemStack{" occupies
-		String v0 = "";
+		StringBuilder v0 = new StringBuilder();
 		for (int i = 10; i < length; i++)
-			v0 += Data.substring(i, i + 1);
-		String v2 = v0.replace(NotFinalMaterial + " x " + NotFinalItemAmount + ", ", "");
+			v0.append(key.charAt(i));
+		String v2 = v0.toString().replace(NotFinalMaterial + " x " + NotFinalItemAmount + ", ", "");
 
 		// Initializing a new variable to change its data
 		String v3 = v2;
@@ -277,9 +259,9 @@ public class APIDS {
 		// Checking whether the item has a lore
 		boolean item_lore_found = false;
 		// The variable that the lore will be written to
-		List<String> FinalItemLore = new ArrayList<String>();
+		List<String> FinalItemLore = new ArrayList<>();
 		// A temporary variable that we will later convert to List
-		String NotFinalItemLore[] = new String[100];
+		String[] NotFinalItemLore;
 
 		// How that works:
 		// Here is almost the same algorithm for calculating values as the custom item
@@ -312,6 +294,7 @@ public class APIDS {
 		// <---------------------------------------------------------------> //
 		// Creating an item based on the data received from the cache string //
 		// <---------------------------------------------------------------> //
+		assert FinalMaterial != null;
 		ItemStack Item = new ItemStack(FinalMaterial, FinalItemAmount);
 		ItemMeta Meta = Item.getItemMeta();
 		if (display_name_found)
@@ -324,9 +307,8 @@ public class APIDS {
 
 	// P.S. Here we should get a key with cached data
 	public String getKeyFromItem(ItemStack Item) {
-		String result = Item.toString();
 		// Additional data to result
 		// result += Item.getDurability();
-		return result;
+		return Item.toString();
 	}
 }

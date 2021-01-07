@@ -19,7 +19,7 @@ import ru.utils.gui.Handler;
 public class main extends JavaPlugin {
 	
 	private static MinecraftConsoleAPI log = new MinecraftConsoleAPI();
-	private static MinecraftConsoleAPI newLog = new MinecraftConsoleAPI();
+	private static MinecraftConsoleAPI logNew = new MinecraftConsoleAPI();
 	private static FileConfiguration config;
 	private Files FileMaster = new Files(this);
 	private API recipe = new API(this);
@@ -63,12 +63,12 @@ public class main extends JavaPlugin {
 	}
 	
 	private void createLogo() {
-		newLog.setPrefix("   ");
-		newLog.info("§9§l╔═════╗ ╔════╗");
-		newLog.info("§9§l║ ╔═╗ ║ ║ ╔══╝");
-		newLog.info("§9§l║ ╚═╝ ║ ║ ╚══╗  §b§lAdditions §fV2.0.1");
-		newLog.info("§9§l║ ╔═╗ ║ ╚══╗ ║  §8§lDeveloped by ILucious");
-		newLog.info("§9§l║ ║ ║ ║ ╔══╝ ║");
-		newLog.info("§9§l╚═╝ ╚═╝ ╚════╝");
+		logNew.setPrefix("   ");
+		logNew.info("§9§l╔═════╗ ╔════╗");
+		logNew.info("§9§l║ ╔═╗ ║ ║ ╔══╝");
+		logNew.info("§9§l║ ╚═╝ ║ ║ ╚══╗  §b§lAdditions §fV2.0.1");
+		logNew.info("§9§l║ ╔═╗ ║ ╚══╗ ║  §8§lDeveloped by ILucious");
+		logNew.info("§9§l║ ║ ║ ║ ╔══╝ ║");
+		logNew.info("§9§l╚═╝ ╚═╝ ╚════╝");
 	}
 }
